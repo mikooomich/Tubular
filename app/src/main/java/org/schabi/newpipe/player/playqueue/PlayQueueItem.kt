@@ -1,5 +1,6 @@
 package org.schabi.newpipe.player.playqueue
 
+import android.content.Context
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.io.Serializable
@@ -58,12 +59,10 @@ class PlayQueueItem private constructor(
         item.streamType
     )
 
-    val stream: Single<StreamInfo>
-        get() =
-            ExtractorHelper
-                .getStreamInfo(serviceId, url, false)
-                .subscribeOn(Schedulers.io())
-                .doOnError { throwable -> error = throwable }
+    fun getStream(context: Context): Single<StreamInfo> = ExtractorHelper
+        .getStreamInfo(context, serviceId, url, false)
+        .subscribeOn(Schedulers.io())
+        .doOnError { throwable -> error = throwable }
 
     override fun equals(o: Any?) = o is PlayQueueItem && serviceId == o.serviceId && url == o.url
 

@@ -52,6 +52,9 @@ sealed interface Screen : NavKey {
         data object BackupRestore : Settings
 
         @Serializable
+        data object SponsorBlock : Settings
+
+        @Serializable
         data object Updates : Settings
 
         @Serializable

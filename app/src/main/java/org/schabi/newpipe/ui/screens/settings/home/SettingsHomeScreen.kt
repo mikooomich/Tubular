@@ -102,6 +102,13 @@ fun SettingsHomeScreen(
                     onClick = { onNavigate(Screen.Settings.BackupRestore) }
                 )
             }
+            item {
+                TextPreference(
+                    title = stringResource(R.string.sponsor_block),
+                    icon = R.drawable.ic_settings,
+                    onClick = { onNavigate(Screen.Settings.SponsorBlock) }
+                )
+            }
             // Show Updates only on release builds
             if (!BuildConfig.DEBUG) {
                 item {

@@ -151,6 +151,10 @@ fun NavDisplay(startDestination: NavKey) {
                 Text(stringResource(id = R.string.settings_category_backup_restore_title))
             }
 
+            entry<Screen.Settings.SponsorBlock> {
+                Text(stringResource(id = R.string.sponsor_block))
+            }
+
             entry<Screen.Settings.Updates> {
                 Text(stringResource(id = R.string.settings_category_updates_title))
             }
