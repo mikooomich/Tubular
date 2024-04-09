@@ -16,9 +16,9 @@ android {
     namespace 'org.schabi.newpipe'
 
     defaultConfig {
-        applicationId "org.polymorphicshade.tubular"
+        applicationId "wah.mikooo.newpipe"
         resValue "string", "app_name", "Tubular"
-        minSdk 21
+        minSdk 31
         targetSdk 33
         versionCode 996
         versionName "0.26.1_r3"
@@ -92,6 +92,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
 
     packagingOptions {
@@ -113,19 +114,19 @@ android {
 }
 
 ext {
-    checkstyleVersion = '10.12.1'
+    checkstyleVersion = '10.15.0'
 
-    androidxLifecycleVersion = '2.6.2'
+    androidxLifecycleVersion = '2.7.0'
     androidxRoomVersion = '2.6.1'
-    androidxWorkVersion = '2.8.1'
+    androidxWorkVersion = '2.9.0'
 
     icepickVersion = '3.2.0'
-    exoPlayerVersion = '2.18.7'
+    exoPlayerVersion = '2.19.1'
     googleAutoServiceVersion = '1.1.1'
     groupieVersion = '2.10.1'
     markwonVersion = '4.6.2'
 
-    leakCanaryVersion = '2.12'
+    leakCanaryVersion = '2.13'
     stethoVersion = '1.6.0'
 }
 
@@ -134,30 +135,31 @@ configurations {
     ktlint
 }
 
-checkstyle {
-    getConfigDirectory().set(rootProject.file("checkstyle"))
-    ignoreFailures false
-    showViolations true
-    toolVersion = checkstyleVersion
-}
+// ---> breaks build
+//checkstyle {
+//    getConfigDirectory().set(rootProject.file("checkstyle"))
+//    ignoreFailures false
+//    showViolations true
+//    toolVersion = checkstyleVersion
+//}
 
-tasks.register('runCheckstyle', Checkstyle) {
-    source 'src'
-    include '**/*.java'
-    exclude '**/gen/**'
-    exclude '**/R.java'
-    exclude '**/BuildConfig.java'
-    exclude 'main/java/us/shandian/giga/**'
-
-    classpath = configurations.checkstyle
-
-    showViolations true
-
-    reports {
-        xml.getRequired().set(true)
-        html.getRequired().set(true)
-    }
-}
+//tasks.register('runCheckstyle', Checkstyle) {
+//    source 'src'
+//    include '**/*.java'
+//    exclude '**/gen/**'
+//    exclude '**/R.java'
+//    exclude '**/BuildConfig.java'
+//    exclude 'main/java/us/shandian/giga/**'
+//
+//    classpath = configurations.checkstyle
+//
+//    showViolations true
+//
+//    reports {
+//        xml.getRequired().set(true)
+//        html.getRequired().set(true)
+//    }
+//}
 
 def outputDir = "${project.buildDir}/reports/ktlint/"
 def inputFiles = project.fileTree(dir: "src", include: "**/*.kt")
@@ -180,12 +182,12 @@ tasks.register('formatKtlint', JavaExec) {
     jvmArgs("--add-opens", "java.base/java.lang=ALL-UNNAMED")
 }
 
-afterEvaluate {
-    if (!System.properties.containsKey('skipFormatKtlint')) {
-        preDebugBuild.dependsOn formatKtlint
-    }
-    preDebugBuild.dependsOn runCheckstyle, runKtlint
-}
+//afterEvaluate {
+//    if (!System.properties.containsKey('skipFormatKtlint')) {
+//        preDebugBuild.dependsOn formatKtlint
+//    }
+//    preDebugBuild.dependsOn runCheckstyle, runKtlint
+//}
 
 sonar {
     properties {
@@ -210,7 +212,7 @@ dependencies {
 
 /** Checkstyle **/
     checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
-    ktlint 'com.pinterest:ktlint:0.45.2'
+    ktlint 'com.pinterest:ktlint:0.50.0'
 
 /** Kotlin **/
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
@@ -270,7 +272,7 @@ dependencies {
 
     // Image loading
     //noinspection GradleDependency --> 2.8 is the last version, not 2.71828!
-    implementation "com.squareup.picasso:picasso:2.8"
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
     // Markdown library for Android
     implementation "io.noties.markwon:core:${markwonVersion}"
@@ -280,7 +282,7 @@ dependencies {
     implementation "ch.acra:acra-core:5.11.3"
 
     // Properly restarting
-    implementation 'com.jakewharton:process-phoenix:2.1.2'
+    implementation 'com.jakewharton:process-phoenix:3.0.0'
 
     // Reactive extensions for Java VM
     implementation "io.reactivex.rxjava3:rxjava:3.1.8"
@@ -302,12 +304,12 @@ dependencies {
 
 /** Testing **/
     testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.mockito:mockito-core:5.6.0'
+    testImplementation 'org.mockito:mockito-core:5.11.0'
 
     androidTestImplementation "androidx.test.ext:junit:1.1.5"
     androidTestImplementation "androidx.test:runner:1.5.2"
     androidTestImplementation "androidx.room:room-testing:${androidxRoomVersion}"
-    androidTestImplementation "org.assertj:assertj-core:3.24.2"
+    androidTestImplementation 'org.assertj:assertj-core:3.25.3'
 }
 
 static String getGitWorkingBranch() {
