@@ -17,11 +17,11 @@ android {
 
     defaultConfig {
         applicationId "wah.mikooo.newpipe"
-        resValue "string", "app_name", "Tubular"
+        resValue "string", "app_name", "*Tubular"
         minSdk 31
         targetSdk 33
         versionCode 996
-        versionName "0.26.1_r3"
+        versionName "0.26.1_r3-wearos-hax"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

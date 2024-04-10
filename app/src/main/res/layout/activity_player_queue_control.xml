@@ -18,7 +18,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
             android:theme="@style/ToolbarTheme"
@@ -48,7 +48,6 @@
         android:paddingTop="5dp"
         android:paddingRight="30dp"
         android:paddingBottom="5dp"
-        android:textColor="@android:color/white"
         android:textSize="22sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -65,7 +64,6 @@
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        android:padding="8dp"
         tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <org.schabi.newpipe.views.NewPipeTextView
@@ -109,7 +107,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:minHeight="40dp"
+            android:minHeight="20dp"
             android:text="-:--:--"
             android:textColor="?attr/colorAccent"
             tools:ignore="HardcodedText"
@@ -123,9 +121,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:paddingStart="12dp"
-            android:paddingTop="6dp"
             android:paddingEnd="12dp"
-            android:paddingBottom="4dp"
             tools:progress="25"
             tools:secondaryProgress="50" />
 
@@ -164,8 +160,8 @@
 
         <ImageButton
             android:id="@+id/control_repeat"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
@@ -180,11 +176,11 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/control_backward"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toLeftOf="@+id/control_fast_rewind"
+            android:layout_toLeftOf="@+id/control_play_pause"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -194,12 +190,13 @@
             tools:ignore="ContentDescription" />
 
         <ImageButton
+            android:visibility="invisible"
             android:id="@+id/control_fast_rewind"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
-            android:layout_toLeftOf="@id/control_play_pause"
+            android:layout_toLeftOf="@id/control_repeat"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -209,8 +206,8 @@
 
         <ImageButton
             android:id="@+id/control_play_pause"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
@@ -226,11 +223,9 @@
         <ProgressBar
             android:id="@+id/control_progress_bar"
             style="?android:attr/progressBarStyleLargeInverse"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_centerInParent="true"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="#00000000"
@@ -244,12 +239,13 @@
 
 
         <ImageButton
+            android:visibility="invisible"
             android:id="@+id/control_fast_forward"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:layout_toRightOf="@id/control_play_pause"
+            android:layout_toRightOf="@id/control_shuffle"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -259,11 +255,11 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/control_forward"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
-            android:layout_toRightOf="@+id/control_fast_forward"
+            android:layout_toRightOf="@id/control_play_pause"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:focusable="true"
@@ -274,8 +270,8 @@
 
         <ImageButton
             android:id="@+id/control_shuffle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"

@@ -587,8 +587,8 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/repeatButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
@@ -597,7 +597,6 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/exo_controls_repeat_off"
                 android:tint="?attr/colorAccent"
@@ -606,14 +605,13 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/shuffleButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@id/repeatButton"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
-                android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_shuffle"
                 android:tint="?attr/colorAccent"
@@ -633,24 +631,24 @@
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/addToPlaylistButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/itemsListClose"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:clickable="true"
+                android:clickable="false"
                 android:focusable="true"
-                android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_playlist_add"
                 android:tint="?attr/colorAccent"
                 android:contentDescription="@string/add_to_playlist"
+                android:visibility="invisible"
                 tools:ignore="RtlHardcoded" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/itemsListClose"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="40dp"
@@ -658,7 +656,6 @@
                 android:clickable="true"
                 android:contentDescription="@string/close"
                 android:focusable="true"
-                android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_close"
                 app:tint="@color/white" />
