@@ -149,7 +149,7 @@ rxjava3-rxjava = { group = "io.reactivex.rxjava3", name = "rxjava", version.ref 
 stetho = { group = "com.facebook.stetho", name = "stetho", version.ref = "stetho" }
 stetho-okhttp3 = { group = "com.facebook.stetho", name = "stetho-okhttp3", version.ref = "stetho" }
 teamnewpipe-nanojson = { group = "com.github.TeamNewPipe", name = "nanojson", version.ref = "teamnewpipe-nanojson" }
-teamnewpipe-newpipe-extractor = { group = "com.github.TeamNewPipe", name = "NewPipeExtractor", version.ref = "teamnewpipe-newpipe-extractor" }
+teamnewpipe-newpipe-extractor = { group = "com.github.polymorphicshade", name = "TubularExtractor", version.ref = "teamnewpipe-newpipe-extractor" }
 teamnewpipe-nononsense-filepicker = { group = "com.github.TeamNewPipe", name = "NoNonsense-FilePicker", version.ref = "teamnewpipe-filepicker" }
 tools-checkstyle = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "checkstyle" }
 tools-ktlint = { group = "com.pinterest", name = "ktlint", version.ref = "ktlint" }
