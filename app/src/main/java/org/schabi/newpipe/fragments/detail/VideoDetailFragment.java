@@ -2653,7 +2653,7 @@ public final class VideoDetailFragment
 
         currentInfo.addSponsorBlockSegment(segment);
 
-        player.UIs().get(MainPlayerUi.class).ifPresent(
+        player.UIs().getOpt(MainPlayerUi.class).ifPresent(
                 playerUi -> playerUi.onMarkSeekbarRequested(currentInfo));
 
         getSponsorBlockFragment().ifPresent(SponsorBlockFragment::refreshSponsorBlockSegments);
@@ -2671,7 +2671,7 @@ public final class VideoDetailFragment
 
         currentInfo.removeSponsorBlockSegment("TEMP");
 
-        player.UIs().get(MainPlayerUi.class).ifPresent(
+        player.UIs().getOpt(MainPlayerUi.class).ifPresent(
                 playerUi -> playerUi.onMarkSeekbarRequested(currentInfo));
 
         getSponsorBlockFragment().ifPresent(SponsorBlockFragment::refreshSponsorBlockSegments);
@@ -2722,7 +2722,7 @@ public final class VideoDetailFragment
                     currentInfo.removeSponsorBlockSegment("TEMP");
                     currentInfo.addSponsorBlockSegment(newSegment);
 
-                    player.UIs().get(MainPlayerUi.class).ifPresent(
+                    player.UIs().getOpt(MainPlayerUi.class).ifPresent(
                             playerUi -> playerUi.onMarkSeekbarRequested(currentInfo));
 
                     getSponsorBlockFragment().ifPresent(
