@@ -7,7 +7,7 @@ plugins {
     alias libs.plugins.android.application
     alias libs.plugins.kotlin.android
     alias libs.plugins.kotlin.compose
-    alias(libs.plugins.kotlin.ksp)
+    alias libs.plugins.kotlin.kapt
     alias libs.plugins.kotlin.parcelize
     alias libs.plugins.checkstyle
     alias libs.plugins.sonarqube
@@ -35,6 +35,12 @@ android {
         }
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
 
     buildTypes {
@@ -187,8 +193,8 @@ sonar {
     }
 }
 
-ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")
+kapt {
+    correctErrorTypes true
 }
 
 aboutLibraries {
@@ -229,7 +235,7 @@ dependencies {
     implementation libs.androidx.recyclerview
     implementation libs.androidx.room.runtime
     implementation libs.androidx.room.rxjava3
-    ksp(libs.androidx.room.compiler)
+    kapt libs.androidx.room.compiler
     implementation libs.androidx.swiperefreshlayout
     implementation libs.androidx.work.runtime
     implementation libs.androidx.work.rxjava3
@@ -239,7 +245,7 @@ dependencies {
     // Instance state boilerplate elimination
     implementation libs.livefront.bridge
     implementation libs.android.state
-    ksp(libs.android.state.processor)
+    kapt libs.android.state.processor
 
     // HTML parser
     implementation libs.jsoup
@@ -259,7 +265,7 @@ dependencies {
 
     // Metadata generator for service descriptors
     compileOnly libs.auto.service
-    ksp(libs.auto.service.kapt)
+    kapt libs.auto.service.kapt
 
     // Manager for complex RecyclerView layouts
     implementation libs.lisawray.groupie
@@ -310,7 +316,7 @@ dependencies {
 
     // Hilt
     implementation libs.hilt.android
-    ksp(libs.hilt.compiler)
+    kapt(libs.hilt.compiler)
 
     // Scroll
     implementation libs.lazycolumnscrollbar
