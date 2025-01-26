@@ -1,5 +1,5 @@
 [versions]
-aboutLibraries = "11.4.0"
+aboutLibraries = "11.5.0"
 acraCore = "5.12.0"
 androidState = "1.4.1"
 androidx-junit = "1.2.1"
@@ -24,6 +24,7 @@ jsoup = "1.18.3"
 junit = "4.13.2"
 kotlin = "2.1.0"
 kotlinxCoroutinesRx3 = "1.10.1"
+ksp = "2.1.0-1.0.29"
 ktlint = "0.50.0"
 lazycolumnscrollbar = "2.2.0"
 leakcanary = "2.14"
@@ -40,7 +41,7 @@ preference = "1.2.1"
 prettytime = "5.0.8.Final"
 processPhoenix = "3.0.0"
 recyclerview = "1.4.0"
-room = "2.6.1"
+room = "2.5.1"
 runner = "1.6.2"
 rxandroid = "3.0.2"
 rxbinding = "4.0.0"
@@ -64,7 +65,7 @@ checkstyle = { id = "checkstyle" }
 hilt = { id = "com.google.dagger.hilt.android" }
 kotlin-android = { id = "kotlin-android" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-kotlin-kapt = { id = "kotlin-kapt" }
+kotlin-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlin-parcelize = { id = "kotlin-parcelize" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }
 
@@ -75,7 +76,7 @@ acra-core = { group = "ch.acra", name = "acra-core", version.ref = "acraCore" }
 android-state = { group = "com.evernote", name = "android-state", version.ref = "androidState" }
 android-state-processor = { group = "com.evernote", name = "android-state-processor", version.ref = "androidState" }
 android-tools-build-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version = "1.10.0" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
 androidx-compose-adaptive = { group = "androidx.compose.material3.adaptive", name = "adaptive" }
