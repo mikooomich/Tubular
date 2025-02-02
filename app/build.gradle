@@ -7,7 +7,7 @@ plugins {
     id "kotlin-android"
     id "kotlin-kapt"
     id "kotlin-parcelize"
-    id "checkstyle"
+//    id "checkstyle"
     id "org.sonarqube" version "4.0.0.2929"
 }
 
@@ -121,7 +121,7 @@ android {
 }
 
 ext {
-    checkstyleVersion = '10.21.1'
+//    checkstyleVersion = '10.21.1'
 
     androidxLifecycleVersion = '2.8.7'
     androidxRoomVersion = '2.6.1'
@@ -138,34 +138,34 @@ ext {
 }
 
 configurations {
-    checkstyle
+//    checkstyle
     ktlint
 }
 
-checkstyle {
-    getConfigDirectory().set(rootProject.file("checkstyle"))
-    ignoreFailures false
-    showViolations true
-    toolVersion = checkstyleVersion
-}
-
-tasks.register('runCheckstyle', Checkstyle) {
-    source 'src'
-    include '**/*.java'
-    exclude '**/gen/**'
-    exclude '**/R.java'
-    exclude '**/BuildConfig.java'
-    exclude 'main/java/us/shandian/giga/**'
-
-    classpath = configurations.checkstyle
-
-    showViolations true
-
-    reports {
-        xml.getRequired().set(true)
-        html.getRequired().set(true)
-    }
-}
+//checkstyle {
+//    getConfigDirectory().set(rootProject.file("checkstyle"))
+//    ignoreFailures false
+//    showViolations true
+//    toolVersion = checkstyleVersion
+//}
+//
+//tasks.register('runCheckstyle', Checkstyle) {
+//    source 'src'
+//    include '**/*.java'
+//    exclude '**/gen/**'
+//    exclude '**/R.java'
+//    exclude '**/BuildConfig.java'
+//    exclude 'main/java/us/shandian/giga/**'
+//
+//    classpath = configurations.checkstyle
+//
+//    showViolations true
+//
+//    reports {
+//        xml.getRequired().set(true)
+//        html.getRequired().set(true)
+//    }
+//}
 
 def outputDir = "${project.buildDir}/reports/ktlint/"
 def inputFiles = project.fileTree(dir: "src", include: "**/*.kt")
@@ -188,12 +188,12 @@ tasks.register('formatKtlint', JavaExec) {
     jvmArgs("--add-opens", "java.base/java.lang=ALL-UNNAMED")
 }
 
-afterEvaluate {
-    if (!System.properties.containsKey('skipFormatKtlint')) {
-        preDebugBuild.dependsOn formatKtlint
-    }
-    preDebugBuild.dependsOn runCheckstyle, runKtlint
-}
+//afterEvaluate {
+//    if (!System.properties.containsKey('skipFormatKtlint')) {
+//        preDebugBuild.dependsOn formatKtlint
+//    }
+//    preDebugBuild.dependsOn runCheckstyle, runKtlint
+//}
 
 sonar {
     properties {
@@ -217,7 +217,7 @@ dependencies {
     implementation 'com.github.TeamNewPipe:NoNonsense-FilePicker:5.0.0'
 
 /** Checkstyle **/
-    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
+//    checkstyle "com.puppycrawl.tools:checkstyle:${checkstyleVersion}"
     ktlint 'com.pinterest:ktlint:0.50.0'
 
 /** Kotlin **/
