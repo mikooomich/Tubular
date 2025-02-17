@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.tools.profgen.ArtProfileKt
 import com.android.tools.profgen.ArtProfileSerializer
 import com.android.tools.profgen.DexFile
@@ -206,6 +207,14 @@ aboutLibraries {
     // harmful for reproducible builds
     offlineMode = true
     duplicationMode = DuplicateMode.MERGE
+}
+
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.each { output ->
+        if (output instanceof BaseVariantOutputImpl) {
+            output.outputFileName = "Tubular-mikooo-${variant.versionName}-${variant.baseName}.apk"
+        }
+    }
 }
 
 dependencies {
