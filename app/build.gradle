@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.api.BaseVariantOutputImpl
 import com.android.tools.profgen.ArtProfileKt
 import com.android.tools.profgen.ArtProfileSerializer
 import com.android.tools.profgen.DexFile
@@ -202,6 +203,15 @@ sonar {
         property "sonar.host.url", "https://sonarcloud.io"
     }
 }
+
+android.applicationVariants.configureEach { variant ->
+    variant.outputs.each { output ->
+        if (output instanceof BaseVariantOutputImpl) {
+            output.outputFileName = "Tubular-mikooo-${variant.versionName}-${variant.baseName}.apk"
+        }
+    }
+}
+
 
 dependencies {
 /** Desugaring **/
