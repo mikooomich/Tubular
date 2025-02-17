@@ -23,9 +23,9 @@ android {
         if (System.properties.containsKey('versionCodeOverride')) {
             versionCode System.getProperty('versionCodeOverride') as Integer
         } else {
-            versionCode 1002
+            versionCode 1003
         }
-        versionName "0.27.5"
+        versionName "0.27.6"
         if (System.properties.containsKey('versionNameSuffix')) {
             versionNameSuffix System.getProperty('versionNameSuffix')
         }
@@ -246,6 +246,8 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:${androidxWorkVersion}"
     implementation "androidx.work:work-rxjava3:${androidxWorkVersion}"
     implementation 'com.google.android.material:material:1.12.0'
+
+    implementation "androidx.webkit:webkit:1.9.0"
 
 /** Third-party libraries **/
     // Instance state boilerplate elimination
