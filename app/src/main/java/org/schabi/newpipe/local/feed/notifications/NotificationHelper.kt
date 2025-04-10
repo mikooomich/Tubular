@@ -72,7 +72,7 @@ class NotificationHelper(val context: Context) {
         )
 
         val avatarIcon =
-            CoilHelper.loadBitmapBlocking(context, data.avatarUrl, R.drawable.ic_newpipe_triangle_white)
+            CoilHelper.loadBitmapBlocking(context, data.avatarUrl, R.drawable.ic_tubular_white)
 
         summaryBuilder.setLargeIcon(avatarIcon)
 
