@@ -16,11 +16,11 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
     namespace 'org.schabi.newpipe'
 
     defaultConfig {
-        applicationId "org.polymorphicshade.tubular"
+        applicationId "wah.mikooo.newpipe"
         resValue "string", "app_name", "Tubular"
         minSdk 21
         targetSdk 33
@@ -68,7 +68,7 @@ android {
                 archivesBaseName = 'Tubular_' + System.getProperty('packageSuffix')
             }
             minifyEnabled true
-            shrinkResources false // disabled to fix F-Droid's reproducible build
+            shrinkResources true // disabled to fix F-Droid's reproducible build
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             archivesBaseName = 'app'
         }
