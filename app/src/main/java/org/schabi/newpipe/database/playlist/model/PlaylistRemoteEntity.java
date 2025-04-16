@@ -2,7 +2,6 @@ package org.schabi.newpipe.database.playlist.model;
 
 import android.text.TextUtils;
 
-import androidx.annotation.Nullable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -135,8 +134,6 @@ public class PlaylistRemoteEntity implements PlaylistLocalItem {
         this.name = name;
     }
 
-    @Nullable
-    @Override
     public String getThumbnailUrl() {
         return thumbnailUrl;
     }
