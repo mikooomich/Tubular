@@ -28,17 +28,13 @@ abstract class AbstractInfoPlayQueue<T extends ListInfo<? extends InfoItem>>
     private transient Disposable fetchReactor;
 
     protected AbstractInfoPlayQueue(final T info) {
-        this(info, 0);
-    }
-
-    protected AbstractInfoPlayQueue(final T info, final int index) {
         this(info.getServiceId(), info.getUrl(), info.getNextPage(),
                 info.getRelatedItems()
                         .stream()
                         .filter(StreamInfoItem.class::isInstance)
                         .map(StreamInfoItem.class::cast)
                         .collect(Collectors.toList()),
-                index);
+                0);
     }
 
     protected AbstractInfoPlayQueue(final int serviceId,
