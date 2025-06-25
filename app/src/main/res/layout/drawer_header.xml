@@ -17,6 +17,7 @@
         tools:ignore="ContentDescription" />
 
     <LinearLayout
+        android:id="@+id/navigation_header_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/drawer_header_padding_top"

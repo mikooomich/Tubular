@@ -28,6 +28,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Insets;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,7 +52,11 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -164,6 +170,48 @@ public class MainActivity extends AppCompatActivity {
         drawerHeaderBinding = DrawerHeaderBinding.bind(drawerLayoutBinding.navigation
                 .getHeaderView(0));
         toolbarLayoutBinding = mainBinding.toolbarLayout;
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainBinding.fragmentHolder, (v, windowInsets) -> {
+            final var systemInsets = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.navigationBars());
+            v.setPadding(systemInsets.left, systemInsets.top, systemInsets.right, systemInsets.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(drawerHeaderBinding.navigationHeaderContainer, (v, windowInsets) -> {
+            final var insets = windowInsets.getInsetsIgnoringVisibility(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.navigationBars());
+
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            mlp.leftMargin = insets.left;
+            mlp.topMargin = insets.top;
+            v.setLayoutParams(mlp);
+
+            return WindowInsetsCompat.CONSUMED;
+        });
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(toolbarLayoutBinding.toolbar, (v, windowInsets) -> {
+            final var insets = windowInsets.getInsetsIgnoringVisibility(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.navigationBars());
+            ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+
+            mlp.leftMargin = insets.left;
+            mlp.topMargin = insets.top;
+            mlp.rightMargin = insets.right;
+            mlp.bottomMargin = insets.bottom;
+            v.setLayoutParams(mlp);
+
+            return WindowInsetsCompat.CONSUMED;
+        });
+
+        ViewCompat.setOnApplyWindowInsetsListener(mainBinding.fragmentPlayerHolder, (v, windowInsets) -> {
+            final var systemInsets = windowInsets.getInsets(
+                    WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.navigationBars());
+            v.setPadding(systemInsets.left, systemInsets.top, systemInsets.right, systemInsets.bottom);
+            return WindowInsetsCompat.CONSUMED;
+        });
+
         setContentView(mainBinding.getRoot());
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
