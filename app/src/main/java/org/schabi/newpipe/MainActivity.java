@@ -871,7 +871,6 @@ public class MainActivity extends AppCompatActivity {
             };
             final IntentFilter intentFilter = new IntentFilter();
             intentFilter.addAction(VideoDetailFragment.ACTION_PLAYER_STARTED);
-            // TODO: sdk36
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 registerReceiver(broadcastReceiver, intentFilter, RECEIVER_NOT_EXPORTED);
             } else {
