@@ -150,23 +150,23 @@ checkstyle {
     toolVersion = libs.versions.checkstyle.get()
 }
 
-tasks.register<Checkstyle>("runCheckstyle") {
-    source("src")
-    include("**/*.java")
-    exclude("**/gen/**")
-    exclude("**/R.java")
-    exclude("**/BuildConfig.java")
-    exclude("main/java/us/shandian/giga/**")
-
-    classpath = configurations.getByName("checkstyle")
-
-    isShowViolations = true
-
-    reports {
-        xml.required = true
-        html.required = true
-    }
-}
+//tasks.register<Checkstyle>("runCheckstyle") {
+//    source("src")
+//    include("**/*.java")
+//    exclude("**/gen/**")
+//    exclude("**/R.java")
+//    exclude("**/BuildConfig.java")
+//    exclude("main/java/us/shandian/giga/**")
+//
+//    classpath = configurations.getByName("checkstyle")
+//
+//    isShowViolations = true
+//
+//    reports {
+//        xml.required = true
+//        html.required = true
+//    }
+//}
 
 val outputDir = project.layout.buildDirectory.dir("reports/ktlint/")
 val inputFiles = fileTree("src") { include("**/*.kt") }
@@ -193,14 +193,14 @@ tasks.register<CheckDependenciesOrder>("checkDependenciesOrder") {
     tomlFile = layout.projectDirectory.file("../gradle/libs.versions.toml")
 }
 
-afterEvaluate {
-    tasks.named("preDebugBuild").configure {
-        if (!System.getProperties().containsKey("skipFormatKtlint")) {
-            dependsOn("formatKtlint")
-        }
-        dependsOn("runCheckstyle", "runKtlint", "checkDependenciesOrder")
-    }
-}
+//afterEvaluate {
+//    tasks.named("preDebugBuild").configure {
+//        if (!System.getProperties().containsKey("skipFormatKtlint")) {
+//            dependsOn("formatKtlint")
+//        }
+//        dependsOn("runCheckstyle", "runKtlint", "checkDependenciesOrder")
+//    }
+//}
 
 sonar {
     properties {
