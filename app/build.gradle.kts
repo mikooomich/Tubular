@@ -39,7 +39,7 @@ configure<ApplicationExtension> {
     namespace = "org.schabi.newpipe"
 
     defaultConfig {
-        applicationId = "org.polymorphicshade.tubular"
+        applicationId = "wah.mikooo.newpipe"
         resValue("string", "app_name", "Tubular")
         minSdk = 21
         targetSdk = 35
