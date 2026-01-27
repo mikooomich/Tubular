@@ -25,9 +25,9 @@ include (":app")
 // We assume, that NewPipe and NewPipe Extractor have the same parent directory.
 // If this is not the case, please change the path in includeBuild().
 
-//includeBuild("../NewPipeExtractor") {
+//includeBuild("../TubularExtractor") {
 //    dependencySubstitution {
-//        substitute(module("com.github.TeamNewPipe:NewPipeExtractor"))
+//        substitute(module("com.github.polymorphicshade:TubularExtractor"))
 //            .using(project(":extractor"))
 //    }
 //}
