@@ -41,7 +41,7 @@ configure<ApplicationExtension> {
     defaultConfig {
         applicationId = "wah.mikooo.newpipe"
         resValue("string", "app_name", "Tubular")
-        minSdk = 21
+        minSdk = 23
         targetSdk = 35
 
         versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1009
