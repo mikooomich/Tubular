@@ -483,7 +483,7 @@
         <item quantity="one">%d सेकेंड</item>
         <item quantity="other">%d सेकंड्स</item>
     </plurals>
-    <string name="remove_watched_popup_title">देखे गए वीडियो हटायें?</string>
+    <string name="remove_watched_popup_title">देखे गए स्ट्रीम्स हटाएँ?</string>
     <string name="remove_watched">देखे गए को हटा दें</string>
     <string name="systems_language">सिस्टम डिफ़ॉल्ट</string>
     <string name="app_language_title">ऐप की भाषा</string>
@@ -529,7 +529,7 @@
     <string name="auto_device_theme_title">ऑटोमैटिक (डिवाइस थीम)</string>
     <string name="night_theme_summary">अपनी पसंदीदा नाइट थीम चुने — %s</string>
     <string name="select_night_theme_toast">आप अपनी पसंदीदा नाइट थीम नीचे चुन सकते हैं</string>
-    <string name="download_has_started">डाउनलोड शुरू हो गया है</string>
+    <string name="download_has_started">डाउनलोड शुरू हुआ</string>
     <string name="restricted_video_no_stream">यह वीडियो आयु-प्रतिबंधित है।
 \nयूट्यूब की नई नीतियों के कारण न्यूपाइप किसी भी आयु प्रतिबंधित वीडियो स्ट्रीम का इस्तेमाल नहीं कर सकता है और इस कारण इसे वीडियो को प्ले करने में असमर्थ है।</string>
     <string name="peertube_instance_url_title">पियरट्यूब इंसटैंस</string>
@@ -669,7 +669,7 @@
     <string name="show_channel_details">चैनल विवरण दिखाएं</string>
     <string name="show_original_time_ago_title">आइटम्स का असल अपलोड समय दिखाएं</string>
     <string name="show_original_time_ago_summary">सेवाओं से मूल पाठ स्ट्रीम आइटम में दिखाई देंगे</string>
-    <string name="remove_watched_popup_warning">प्लेलिस्ट में शामिल, पहले और बाद में देखे जा चुके वीडियो हटा दिए जाएंगे। \nक्या यक़ीनन आप ऐसा चाह्ते हैं? इसे असंपादित नहीं किया जा सकेगा!</string>
+    <string name="remove_watched_popup_warning">जो स्ट्रीम्स प्लेलिस्ट में जोड़ने से पहले या बाद में देखी जा चुकी हैं, उन्हें हटा दिया जाएगा।\nक्या यक़ीनन आप ऐसा चाह्ते हैं?</string>
     <plurals name="minutes">
         <item quantity="one">%d मिनट</item>
         <item quantity="other">%d मिनट्स</item>
@@ -845,9 +845,9 @@
     <string name="player_http_403">पले करते समय सर्वर से HTTP error 403 मिला, शायद स्ट्रीमिंग URL एक्सपायर होने या IP बैन की वजह से हुआ</string>
     <string name="player_http_invalid_status">पले करते समय सर्वर से HTTP error %1$s मिला</string>
     <string name="youtube_player_http_403">पले करते समय सर्वर से HTTP error 403 मिला, जो शायद IP बैन या स्ट्रीमिंग URL डीओबफस्केशन की दिक्कतों की वजह से हुआ है</string>
-    <string name="sign_in_confirm_not_bot_error">%1$s ने डेटा देने से मना कर दिया, और यह कन्फर्म करने के लिए लॉगिन मांगा कि रिक्वेस्ट करने वाला बोट नहीं है।\n\nहो सकता है कि %1$s ने आपके IP को कुछ समय के लिए बैन कर दिया हो, आप कुछ समय इंतज़ार कर सकते हैं या किसी दूसरे IP पर स्विच कर सकते हैं (जैसे VPN ऑन/ऑफ करके, या WiFi से मोबाइल डेटा पर स्विच करके)।</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s ने डेटा देने से मना कर दिया, और यह कन्फर्म करने के लिए लॉगिन मांगा कि रिक्वेस्ट करने वाला बोट नहीं है।\n\nहो सकता है कि %1$s ने आपके IP को कुछ समय के लिए बैन कर दिया हो, आप कुछ समय इंतज़ार कर सकते हैं या किसी दूसरे IP पर स्विच कर सकते हैं (जैसे VPN ऑन/ऑफ करके, या WiFi से मोबाइल डेटा पर स्विच करके)।\n\nअधिक जानकारी के लिए कृपया <a href="%2$s">यह FAQ एंट्री</a> देखें।</string>
     <string name="unsupported_content_in_country">यह कंटेंट अभी चुने गए देश के कंटेंट के लिए उपलब्ध नहीं है।\n\n\"सेटिंग्स &gt; कंटेंट &gt; डिफ़ॉल्ट कंटेंट देश\" से अपना चुनाव बदलें।</string>
-    <string name="kao_dialog_warning">Google ने घोषणा की है कि 2026/2027 से, प्रमाणित Android डिवाइसों पर सभी ऐप्स के लिए डेवलपर्स को अपनी व्यक्तिगत पहचान संबंधी जानकारी सीधे Google को जमा करनी होगी। चूँकि इस ऐप के डेवलपर्स इस आवश्यकता से सहमत नहीं हैं, यह ऐप उस समय के बाद प्रमाणित Android डिवाइसों पर काम नहीं करेगा।</string>
+    <string name="kao_dialog_warning">अगस्त 2025 में, Google ने घोषणा की कि सितंबर 2026 से, सर्टिफाइड डिवाइस पर सभी Android ऐप्स जिनमें Play Store के बाहर से इंस्टॉल किए गए ऐप्स भी शामिल हैं, को इंस्टॉल करने के लिए डेवलपर वेरिफिकेशन ज़रूरी होगा। चूंकि NewPipe के डेवलपर्स इस शर्त से सहमत नहीं हैं, इसलिए उस समय के बाद NewPipe सर्टिफाइड Android डिवाइस पर काम नहीं करेगा।</string>
     <string name="kao_dialog_more_info">विवरण</string>
     <string name="kao_solution">समाधान</string>
 </resources>

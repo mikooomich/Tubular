@@ -854,4 +854,24 @@
     <string name="kao_dialog_warning">En Agosto de 2025, Google ha anunciado que, a partir de 2026/2027, todas las aplicaciones en dispositivos Android certificados requerirán que los desarrolladores envíen sus datos personales de identidad directamente a Google. Como los desarrolladores de NewPipe no están de acuerdo con este requisito, la aplicación dejará de funcionar en dispositivos Android certificados después de esa fecha.</string>
     <string name="kao_dialog_more_info">Detalles</string>
     <string name="kao_solution">Solución</string>
+    <plurals name="export_subscriptions">
+        <item quantity="one">Exportando %d suscripción…</item>
+        <item quantity="many">Exportando %d suscripciones…</item>
+        <item quantity="other">Exportando %d suscripciones…</item>
+    </plurals>
+    <plurals name="load_subscriptions">
+        <item quantity="one">Cargando %d suscripción…</item>
+        <item quantity="many">Cargando %d suscripciones…</item>
+        <item quantity="other">Cargando %d suscripciones…</item>
+    </plurals>
+    <plurals name="import_subscriptions">
+        <item quantity="one">Importando %d suscripción…</item>
+        <item quantity="many">Importando %d suscripciones…</item>
+        <item quantity="other">Importando %d suscripciones…</item>
+    </plurals>
+    <string name="import_subscriptions_title">Importar suscripciones</string>
+    <string name="export_subscriptions_title">Exportar suscripciones</string>
+    <string name="import_subscriptions_summary">Importar suscripciones desde una exportación .json anterior</string>
+    <string name="export_subscriptions_summary">Exportar suscripciones a un archivo .json</string>
+    <string name="import_from_previous_export">Importar desde exportación anterior</string>
 </resources>

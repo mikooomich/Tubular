@@ -12,10 +12,10 @@ autoservice-google = "1.1.1"
 autoservice-zacsweers = "1.2.0"
 bridge = "v2.0.2"
 cardview = "1.0.0"
-checkstyle = "13.2.0"
+checkstyle = "13.4.0"
 coil = "3.4.0"
 constraintlayout = "2.2.1"
-core = "1.17.0"
+core = "1.18.0"
 desugar = "2.1.5"
 documentfile = "1.1.0"
 exoplayer = "2.19.1"
@@ -24,22 +24,24 @@ groupie = "2.10.1"
 jsoup = "1.22.1"
 junit = "4.13.2"
 junit-ext = "1.3.0"
-kotlin = "2.3.10"
+kotlin = "2.3.20"
+kotlinx-coroutines-rx3 = "1.10.2"
+kotlinx-serialization-json = "1.11.0"
 ksp = "2.3.6"
 ktlint = "1.8.0"
 leakcanary = "2.14"
-lifecycle = "2.10.0" # Newer versions require minSdk >= 23
+lifecycle = "2.10.0"
 localbroadcastmanager = "1.1.0"
 markwon = "4.6.2"
 material = "1.11.0" # TODO: update to newer version after bug is fixed. See https://github.com/TeamNewPipe/NewPipe/pull/13018
 media = "1.7.1"
-mockitoCore = "5.22.0"
+mockitoCore = "5.23.0"
 okhttp = "5.3.2"
 phoenix = "3.0.0"
 preference = "1.2.1"
 prettytime = "5.0.8.Final"
 recyclerview = "1.4.0"
-room = "2.8.4" # Newer versions require minSdk >= 23
+room = "2.8.4"
 runner = "1.7.0"
 rxandroid = "3.0.2"
 rxbinding = "4.0.0"
@@ -58,10 +60,10 @@ teamnewpipe-nanojson = "e9d656ddb49a412a5a0a5d5ef20ca7ef09549996"
 # the corresponding commit hash, since JitPack sometimes deletes artifacts.
 # If there’s already a git hash, just add more of it to the end (or remove a letter)
 # to cause jitpack to regenerate the artifact.
-teamnewpipe-newpipe-extractor = "8282aa7abaecb5a8f8827a1d8df4acb03c85d48a"
+teamnewpipe-newpipe-extractor = "1512cf3222b0c5d87a249e6ac231b98090c42623"
 viewpager2 = "1.1.0"
-webkit = "1.15.0" # Newer versions require minSdk >= 23
-work = "2.11.1"  # Newer versions require minSdk >= 23
+webkit = "1.15.0"
+work = "2.11.2"
 
 [libraries]
 acra-core = { module = "ch.acra:acra-core", version.ref = "acra" }
@@ -110,6 +112,8 @@ jakewharton-phoenix = { module = "com.jakewharton:process-phoenix", version.ref 
 jakewharton-rxbinding = { module = "com.jakewharton.rxbinding4:rxbinding", version.ref = "rxbinding" }
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 junit = { module = "junit:junit", version.ref = "junit" }
+kotlinx-coroutines-rx3 = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-rx3", version.ref = "kotlinx-coroutines-rx3" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
 lisawray-groupie-core = { module = "com.github.lisawray.groupie:groupie", version.ref = "groupie" }
 lisawray-groupie-viewbinding = { module = "com.github.lisawray.groupie:groupie-viewbinding", version.ref = "groupie" }
 livefront-bridge = { module = "com.github.livefront:bridge", version.ref = "bridge" }
@@ -136,4 +140,5 @@ google-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" } # Needed for statesaver
 jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+jetbrains-kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }

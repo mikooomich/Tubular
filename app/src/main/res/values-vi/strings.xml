@@ -62,7 +62,7 @@
     <string name="general_error">Lỗi</string>
     <string name="network_error">Lỗi kết nối mạng</string>
     <string name="could_not_load_thumbnails">Không thể tải tất cả hình thu nhỏ</string>
-    <string name="parsing_error">Không thể phân tích cú pháp trang web vì trang này đã ngừng hoạt động vào 21/07/2025.</string>
+    <string name="parsing_error">Không thể phân tích cú pháp web.</string>
     <string name="content_not_available">Nội dung không khả dụng</string>
     <string name="could_not_setup_download_menu">Không thể thiết lập menu tải về</string>
     <string name="app_ui_crash">Ứng dụng/Giao diện người dùng bị lỗi</string>
@@ -821,8 +821,8 @@
     <string name="trending_movies">Phim và chương trình đang thịnh hành</string>
     <string name="trending_music">Âm nhạc đang thịnh hành</string>
     <string name="player_http_403">Đã xảy ra lỗi HTTP 403 trong khi phát, có thể do URL phát sóng đã hết hạn hoặc bị ban IP</string>
-    <string name="sign_in_confirm_not_bot_error">%1$s đã từ chối cung cấp dữ liệu, cần phải đăng nhập để xác nhận yêu cầu viên ko phải là bot.\n\nIP này có vẻ đã bị ban tạm thời bởi %1$s, bạn có thể đợi một lúc hoặc chuyển sang IP khác (ví dụ như việc tắt / bật lại VPN, hoặc là chuyển mạng từ WIFI sang 4G/5G).</string>
-    <string name="unsupported_content_in_country">Nội dung này không được hỗ trợ tại quốc gia mà bạn chọn.\n\nHãy đổi quốc gia trong phần \"Cài đặt &gt; Nội dung &gt; Nội dung quốc gia mặc định\".</string>
+    <string name="sign_in_confirm_not_bot_error">%1$s đã từ chối cung cấp dữ liệu, cần phải đăng nhập để xác nhận requester của NewPipe ko phải là bot.\n\nIP này có vẻ đã bị ban tạm thời bởi %1$s, bạn có thể đợi một lúc hoặc chuyển sang IP khác (ví dụ như việc tắt / bật lại VPN, hoặc là chuyển mạng từ WIFI sang 4G/5G).\n\nXem qua <a href="%2$s">phần FAQ này</a> đẻ biết thêm chi tiết</string>
+    <string name="unsupported_content_in_country">Nội dung này không được hỗ trợ tại quốc gia mà bạn chọn.\n\nHãy đổi quốc gia trong phần \"Cài đặt &gt; Nội dung &gt; Quốc gia nội dung mặc định\".</string>
     <string name="permission_display_over_apps_message">Để sử dụng tính năng phát video nổi, hãy chọn %1$s trong Cài đặt Android và bật tính năng %2$s.</string>
     <string name="youtube_player_http_403">Đã xảy ra lỗi HTTP 403 trong khi phát, có thể IP này đã bị ban hoặc vấn đề phát URL deobfuscation</string>
     <string name="permission_display_over_apps_permission_name">\"Cho phép hiển thị trên ứng dụng khác\"</string>
@@ -831,4 +831,7 @@
     <string name="account_terminated_service_provides_reason">Tài khoản bị vô hiệu hóa. \n\n%1$s cung cấp lý do này: %2$s</string>
     <string name="entry_deleted">Entry đã xóa</string>
     <string name="player_http_invalid_status">Đã xảy ra lỗi HTTP %1$s trong khi phát</string>
+    <string name="kao_dialog_warning">Từ tháng 8 năm 2025, Google đã thông báo rằng kể từ tháng 9 năm 2026, việc cài app sẽ yêu cầu các nhà phát triển phải xác minh trên những thiết bị đã chứng nhận, kể cả đối với các ứng dụng ngoài Play Store. Vì các nhà phát triển của NewPipe không đồng ý với điều kiện này, nên có lẽ NewPipe sẽ không còn hoạt động trên các máy Android được chứng nhận sau thời điểm ấy.</string>
+    <string name="kao_dialog_more_info">Chi tiết</string>
+    <string name="kao_solution">Giải pháp</string>
 </resources>

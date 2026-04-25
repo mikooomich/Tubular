@@ -839,8 +839,8 @@
     <string name="share_playlist_as_youtube_temporary_playlist">Поделиться как временным плейлистом YouTube</string>
     <string name="tab_bookmarks_short">Плейлисты</string>
     <string name="feed_group_page_summary">Страница группы каналов</string>
-    <string name="select_a_feed_group">Выберите группу кормов</string>
-    <string name="no_feed_group_created_yet">Группа кормов еще не создана</string>
+    <string name="select_a_feed_group">Выберите группу каналов</string>
+    <string name="no_feed_group_created_yet">Нет созданной группы каналов</string>
     <string name="search_with_service_name">Поиск %1$s</string>
     <string name="search_with_service_name_and_filter">Поиск %1$s (%2$s)</string>
     <string name="channel_tab_likes">Лайки</string>

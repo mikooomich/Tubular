@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.kapt)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.jetbrains.kotlin.parcelize)
+    alias(libs.plugins.jetbrains.kotlinx.serialization)
     alias(libs.plugins.sonarqube)
     checkstyle
 }
@@ -44,9 +45,9 @@ configure<ApplicationExtension> {
         minSdk = 23
         targetSdk = 35
 
-        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1009
+        versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1010
 
-        versionName = "0.28.4"
+        versionName = "0.28.5"
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -245,6 +246,12 @@ dependencies {
     implementation(libs.androidx.work.rxjava3)
     implementation(libs.google.android.material)
     implementation(libs.androidx.webkit)
+
+    // Coroutines interop
+    implementation(libs.kotlinx.coroutines.rx3)
+
+    // Kotlinx Serialization
+    implementation(libs.kotlinx.serialization.json)
 
     /** Third-party libraries **/
     implementation(libs.livefront.bridge)
