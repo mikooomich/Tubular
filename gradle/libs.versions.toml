@@ -142,7 +142,7 @@ lisawray-groupie-core = { module = "com.github.lisawray.groupie:groupie", versio
 lisawray-groupie-viewbinding = { module = "com.github.lisawray.groupie:groupie-viewbinding", version.ref = "groupie" }
 livefront-bridge = { module = "com.github.livefront:bridge", version.ref = "bridge" }
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockitoCore" }
-newpipe-extractor = { module = "com.github.TeamNewPipe:NewPipeExtractor", version.ref = "teamnewpipe-newpipe-extractor" }
+newpipe-extractor = { module = "com.github.polymorphicshade:TubularExtractor", version.ref = "teamnewpipe-newpipe-extractor" }
 newpipe-filepicker = { module = "com.github.TeamNewPipe:NoNonsense-FilePicker", version.ref = "teamnewpipe-filepicker" }
 newpipe-nanojson = { module = "com.github.TeamNewPipe:nanojson", version.ref = "teamnewpipe-nanojson" }
 noties-markwon-core = { module = "io.noties.markwon:core", version.ref = "markwon" }
