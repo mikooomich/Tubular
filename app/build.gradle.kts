@@ -47,6 +47,9 @@ configure<ApplicationExtension> {
         versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: 1010
 
         versionName = "0.28.5"
+        versionName += "-sponsorblock"
+        versionName += "-r1"
+
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
