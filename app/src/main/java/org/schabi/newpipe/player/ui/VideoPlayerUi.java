@@ -248,6 +248,9 @@ public abstract class VideoPlayerUi extends PlayerUi implements SeekBar.OnSeekBa
         ));
         binding.switchMute.setOnClickListener(makeOnClickListener(player::toggleMute));
 
+        binding.unskipButton.setOnClickListener(v -> onUnskipClicked());
+        binding.skipButton.setOnClickListener(v -> onSkipClicked());
+
         ViewCompat.setOnApplyWindowInsetsListener(binding.itemsListPanel, (view, windowInsets) -> {
             final Insets cutout = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
             if (!cutout.equals(Insets.NONE)) {
@@ -307,6 +310,9 @@ public abstract class VideoPlayerUi extends PlayerUi implements SeekBar.OnSeekBa
         binding.openInBrowser.setOnClickListener(null);
         binding.playerCloseButton.setOnClickListener(null);
         binding.switchMute.setOnClickListener(null);
+
+        binding.unskipButton.setOnClickListener(null);
+        binding.skipButton.setOnClickListener(null);
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.itemsListPanel, null);
 
@@ -1010,6 +1016,35 @@ public abstract class VideoPlayerUi extends PlayerUi implements SeekBar.OnSeekBa
         super.onRenderedFirstFrame();
         //TODO check if this causes black screen when switching to fullscreen
         animate(binding.surfaceForeground, false, DEFAULT_CONTROLS_DURATION);
+    }
+
+    public void showAutoUnskip() {
+        binding.unskipButton.setVisibility(View.VISIBLE);
+    }
+
+    public void hideAutoUnskip() {
+        binding.unskipButton.setVisibility(View.GONE);
+    }
+
+    public void showAutoSkip() {
+        binding.skipButton.setVisibility(View.VISIBLE);
+    }
+    public void hideAutoSkip() {
+        binding.skipButton.setVisibility(View.GONE);
+    }
+
+    public void onUnskipClicked() {
+        if (DEBUG) {
+            Log.d(TAG, "onUnskipClicked() called");
+        }
+        player.toggleUnskip();
+    }
+
+    public void onSkipClicked() {
+        if (DEBUG) {
+            Log.d(TAG, "onSkipClicked() called");
+        }
+        player.toggleSkip();
     }
     //endregion
 
