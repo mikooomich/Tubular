@@ -48,7 +48,7 @@ configure<ApplicationExtension> {
 
         versionName = "0.28.5"
         versionName += "-sponsorblock"
-        versionName += "-r1"
+        versionName += "-r2"
 
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
