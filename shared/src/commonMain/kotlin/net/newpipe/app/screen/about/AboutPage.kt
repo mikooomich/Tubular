@@ -30,7 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import net.newpipe.app.BuildConfig
+import wah.mikooo.newpipe.BuildConfig
 import net.newpipe.app.Constants
 import net.newpipe.app.composable.about.LinkListItem
 import net.newpipe.app.model.Link

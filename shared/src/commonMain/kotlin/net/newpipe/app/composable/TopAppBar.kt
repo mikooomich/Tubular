@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewWrapper
-import net.newpipe.app.BuildConfig
+import wah.mikooo.newpipe.BuildConfig
 import net.newpipe.app.preview.ThemePreviewProvider
 import net.newpipe.app.theme.currentServiceTopAppBarColors
 import newpipe.shared.generated.resources.Res
