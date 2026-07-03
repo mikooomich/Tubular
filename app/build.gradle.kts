@@ -46,7 +46,7 @@ configure<ApplicationExtension> {
     namespace = NEWPIPE_APPLICATION_ID_OLD
 
     defaultConfig {
-        applicationId = NEWPIPE_APPLICATION_ID_OLD
+        applicationId = "wah.mikooo.newpipe"
         resValue("string", "app_name", "Tubular")
         minSdk {
             version = release(NEWPIPE_VERSION_SDK_MIN)
@@ -57,7 +57,7 @@ configure<ApplicationExtension> {
 
         versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: NEWPIPE_VERSION_CODE
 
-        versionName = NEWPIPE_VERSION_NAME + "-mikooo-r1"
+        versionName = NEWPIPE_VERSION_NAME + "-mikooo-r2"
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
