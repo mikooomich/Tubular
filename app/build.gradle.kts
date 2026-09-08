@@ -39,7 +39,7 @@ configure<ApplicationExtension> {
     namespace = NEWPIPE_APPLICATION_ID_OLD
 
     defaultConfig {
-        applicationId = NEWPIPE_APPLICATION_ID_OLD
+        applicationId = "wah.mikooo.newpipe" //NEWPIPE_APPLICATION_ID_OLD
         resValue("string", "app_name", "NewPipe")
         minSdk {
             version = release(NEWPIPE_VERSION_SDK_MIN)
@@ -50,7 +50,7 @@ configure<ApplicationExtension> {
 
         versionCode = System.getProperty("versionCodeOverride")?.toInt() ?: NEWPIPE_VERSION_CODE
 
-        versionName = NEWPIPE_VERSION_NAME
+        versionName = NEWPIPE_VERSION_NAME + "-r1"
         System.getProperty("versionNameSuffix")?.let { versionNameSuffix = it }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
