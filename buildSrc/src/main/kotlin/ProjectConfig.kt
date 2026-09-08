@@ -10,6 +10,7 @@ const val NEWPIPE_VERSION_SDK_TARGET = 35
 
 const val NEWPIPE_VERSION_CODE = 1016
 const val NEWPIPE_VERSION_NAME = "0.29.2"
+const val NEWPIPE_VERSION_NAME_SUFFIX = "-mikooo-r1"
 
 const val NEWPIPE_APPLICATION_ID_OLD = "org.schabi.newpipe"
 const val NEWPIPE_APPLICATION_ID_NEW = "net.newpipe.app"
