@@ -214,10 +214,22 @@ public final class PlayerHelper {
                         context.getString(R.string.default_right_gesture_control_value));
     }
 
+    public static String getActionForMiddleGestureSide(@NonNull final Context context) {
+        return getPreferences(context)
+                .getString(context.getString(R.string.middle_gesture_control_key),
+                        context.getString(R.string.default_middle_gesture_control_value));
+    }
+
     public static String getActionForLeftGestureSide(@NonNull final Context context) {
         return getPreferences(context)
                 .getString(context.getString(R.string.left_gesture_control_key),
                         context.getString(R.string.default_left_gesture_control_value));
+    }
+
+    public static double getMiddleGestureWidth(@NonNull final Context context) {
+        return Float.parseFloat(getPreferences(context).getString(
+                context.getString(R.string.middle_gesture_area_width_key),
+                context.getString(R.string.default_middle_gesture_area_width_value)));
     }
 
     public static boolean isStartMainPlayerFullscreenEnabled(@NonNull final Context context) {
@@ -276,6 +288,11 @@ public final class PlayerHelper {
     @NonNull
     public static SeekParameters getSeekParameters(@NonNull final Context context) {
         return isUsingInexactSeek(context) ? SeekParameters.CLOSEST_SYNC : SeekParameters.EXACT;
+    }
+
+    public static boolean getSeekInsteadOfSkip(@NonNull final Context context) {
+        return getPreferences(context).getBoolean(
+                context.getString(R.string.seek_on_media_button_events_key), false);
     }
 
     public static long getPreferredCacheSize() {

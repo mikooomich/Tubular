@@ -9,14 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.isVisible
 import kotlin.math.abs
+import kotlin.math.roundToInt
 import org.schabi.newpipe.MainActivity
 import org.schabi.newpipe.R
 import org.schabi.newpipe.ktx.AnimationType
 import org.schabi.newpipe.ktx.animate
 import org.schabi.newpipe.player.Player
 import org.schabi.newpipe.player.helper.AudioReactor
+import org.schabi.newpipe.player.helper.PlaybackParameterDialog
 import org.schabi.newpipe.player.helper.PlayerHelper
+import org.schabi.newpipe.player.helper.PlayerSemitoneHelper
 import org.schabi.newpipe.player.ui.MainPlayerUi
+import org.schabi.newpipe.util.SliderStrategy
 import org.schabi.newpipe.util.ThemeHelper.getAndroidDimenPx
 
 /**
@@ -107,6 +111,7 @@ class MainPlayerGestureListener(
             binding.volumeRelativeLayout.animate(true, 200, AnimationType.SCALE_AND_ALPHA)
         }
         binding.brightnessRelativeLayout.isVisible = false
+        binding.playbackSpeedRelativeLayout.isVisible = false
     }
 
     private fun onScrollBrightness(distanceY: Float) {
@@ -152,6 +157,61 @@ class MainPlayerGestureListener(
             binding.brightnessRelativeLayout.animate(true, 200, AnimationType.SCALE_AND_ALPHA)
         }
         binding.volumeRelativeLayout.isVisible = false
+        binding.playbackSpeedRelativeLayout.isVisible = false
+    }
+
+    private fun onScrollPlaybackSpeed(distanceY: Float) {
+        val bar: ProgressBar = binding.playbackSpeedProgressBar
+        val maxPlaybackSpeed: Float = PlaybackParameterDialog.getMaxPitchOrSpeed(player.context)
+        val minPlaybackSpeed: Float = PlaybackParameterDialog.getMinPitchOrSpeed()
+        val playbackSpeedStep: Float = PlaybackParameterDialog.getCurrentStepSize(player.context)
+
+        val quadraticStrategy: SliderStrategy = SliderStrategy.Quadratic(
+            PlaybackParameterDialog.getMinPitchOrSpeed().toDouble(),
+            PlaybackParameterDialog.getMaxPitchOrSpeed(player.context).toDouble(),
+            1.0,
+            bar.max
+        )
+
+        // If we just started sliding, change the progress bar to match the current playback speed
+        if (!binding.playbackSpeedRelativeLayout.isVisible) {
+            bar.progress = quadraticStrategy.progressOf(player.playbackSpeed.toDouble()).coerceIn(0, bar.max)
+        }
+
+        // Update progress bar
+        bar.incrementProgressBy(distanceY.toInt())
+
+        // Use quadratic strategy to convert progress back to playback speed
+        val currentPlaybackSpeed: Float =
+            (
+                (quadraticStrategy.valueOf(bar.progress).toFloat() / playbackSpeedStep).roundToInt() *
+                    playbackSpeedStep
+                ).coerceIn(minPlaybackSpeed, maxPlaybackSpeed)
+
+        player.playbackSpeed = currentPlaybackSpeed
+        if (!PlaybackParameterDialog.getPlaybackUnhooked(player.context)) {
+            if (!PlaybackParameterDialog.getPitchControlModeSemitone(player.context)) {
+                player.playbackPitch = currentPlaybackSpeed
+            } else {
+                player.playbackPitch = PlayerSemitoneHelper.semitonesToPercent(
+                    PlayerSemitoneHelper.percentToSemitones(currentPlaybackSpeed.toDouble())
+                ).toFloat()
+            }
+        }
+
+        if (DEBUG) {
+            Log.d(TAG, "onScroll().playbackSpeedControl, currentPlaybackSpeed = $currentPlaybackSpeed")
+        }
+
+        // Update player center image
+        binding.playbackSpeedTextView.text = PlayerHelper.formatSpeed(currentPlaybackSpeed.toDouble())
+
+        // Make sure the correct layout is visible
+        if (!binding.playbackSpeedRelativeLayout.isVisible) {
+            binding.playbackSpeedRelativeLayout.animate(true, 200, AnimationType.SCALE_AND_ALPHA)
+        }
+        binding.brightnessRelativeLayout.isVisible = false
+        binding.volumeRelativeLayout.isVisible = false
     }
 
     override fun onScrollEnd(event: MotionEvent) {
@@ -161,6 +221,9 @@ class MainPlayerGestureListener(
         }
         if (binding.brightnessRelativeLayout.isVisible) {
             binding.brightnessRelativeLayout.animate(false, 200, AnimationType.SCALE_AND_ALPHA, 200)
+        }
+        if (binding.playbackSpeedRelativeLayout.isVisible) {
+            binding.playbackSpeedRelativeLayout.animate(false, 200, AnimationType.SCALE_AND_ALPHA, 200)
         }
     }
 
@@ -195,32 +258,69 @@ class MainPlayerGestureListener(
 
         isMoving = true
 
-        // -- Brightness and Volume control --
-        if (getDisplayHalfPortion(initialEvent) == DisplayPortion.RIGHT_HALF) {
+        var displayPortion: DisplayPortion
+
+        if (PlayerHelper.getActionForMiddleGestureSide(player.context) !=
+            player.context.getString(R.string.none_control_key)
+        ) {
+            displayPortion = getDisplayPortion(initialEvent)
+        } else {
+            displayPortion = getDisplayHalfPortion(initialEvent)
+            if (displayPortion == DisplayPortion.LEFT_HALF) {
+                displayPortion = DisplayPortion.LEFT
+            } else {
+                displayPortion = DisplayPortion.RIGHT
+            }
+        }
+
+        // -- Brightness Volume and Tempo control --
+        if (displayPortion == DisplayPortion.RIGHT) {
             when (PlayerHelper.getActionForRightGestureSide(player.context)) {
                 player.context.getString(R.string.volume_control_key) ->
                     onScrollVolume(distanceY)
 
                 player.context.getString(R.string.brightness_control_key) ->
                     onScrollBrightness(distanceY)
+
+                player.context.getString(R.string.playback_speed_control_key) ->
+                    onScrollPlaybackSpeed(distanceY)
             }
-        } else {
+        } else if (displayPortion == DisplayPortion.LEFT) {
             when (PlayerHelper.getActionForLeftGestureSide(player.context)) {
                 player.context.getString(R.string.volume_control_key) ->
                     onScrollVolume(distanceY)
 
                 player.context.getString(R.string.brightness_control_key) ->
                     onScrollBrightness(distanceY)
+
+                player.context.getString(R.string.playback_speed_control_key) ->
+                    onScrollPlaybackSpeed(distanceY)
+            }
+        } else {
+            when (PlayerHelper.getActionForMiddleGestureSide(player.context)) {
+                player.context.getString(R.string.volume_control_key) ->
+                    onScrollVolume(distanceY)
+
+                player.context.getString(R.string.brightness_control_key) ->
+                    onScrollBrightness(distanceY)
+
+                player.context.getString(R.string.playback_speed_control_key) ->
+                    onScrollPlaybackSpeed(distanceY)
             }
         }
-
         return true
     }
 
     override fun getDisplayPortion(e: MotionEvent): DisplayPortion {
         return when {
-            e.x < binding.root.width / 3.0 -> DisplayPortion.LEFT
-            e.x > binding.root.width * 2.0 / 3.0 -> DisplayPortion.RIGHT
+            e.x < binding.root.width *
+                (0.5 - PlayerHelper.getMiddleGestureWidth(player.context) / 2.0)
+            -> DisplayPortion.LEFT
+
+            e.x > binding.root.width *
+                (0.5 + PlayerHelper.getMiddleGestureWidth(player.context) / 2.0)
+            -> DisplayPortion.RIGHT
+
             else -> DisplayPortion.MIDDLE
         }
     }

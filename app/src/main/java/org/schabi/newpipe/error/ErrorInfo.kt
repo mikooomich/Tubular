@@ -171,6 +171,21 @@ class ErrorInfo private constructor(
 
         fun throwableToStringList(throwable: Throwable) = arrayOf(throwable.stackTraceToString())
 
+        fun removeDuplicates(items: MutableList<Throwable>): List<Throwable> {
+            val messageCache = HashSet<String?>()
+            val iterator = items.listIterator()
+            while (iterator.hasNext()) {
+                val item = iterator.next()
+                val message = item.message
+                if (messageCache.contains(message)) {
+                    iterator.remove()
+                } else {
+                    messageCache.add(message)
+                }
+            }
+            return items
+        }
+
         fun throwableListToStringList(throwableList: List<Throwable>) = throwableList.map { it.stackTraceToString() }.toTypedArray()
 
         fun getMessage(

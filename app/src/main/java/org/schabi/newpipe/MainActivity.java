@@ -295,15 +295,18 @@ public class MainActivity extends AppCompatActivity {
         //Kiosks
         final int currentServiceId = ServiceHelper.getSelectedServiceId(this);
         final StreamingService service = NewPipe.getService(currentServiceId);
+        final boolean showKiosks = sharedPreferences.getBoolean(
+                getString(R.string.show_kiosks_key), true);
 
-        int kioskMenuItemId = 0;
-
-        for (final String ks : service.getKioskList().getAvailableKiosks()) {
-            drawerLayoutBinding.navigation.getMenu()
-                    .add(R.id.menu_kiosks_group, kioskMenuItemId, 0, KioskTranslator
-                            .getTranslatedKioskName(ks, this))
-                    .setIcon(KioskTranslator.getKioskIcon(ks));
-            kioskMenuItemId++;
+        if (showKiosks) {
+            int kioskMenuItemId = 0;
+            for (final String ks : service.getKioskList().getAvailableKiosks()) {
+                drawerLayoutBinding.navigation.getMenu()
+                        .add(R.id.menu_kiosks_group, kioskMenuItemId, 0, KioskTranslator
+                                .getTranslatedKioskName(ks, this))
+                        .setIcon(KioskTranslator.getKioskIcon(ks));
+                kioskMenuItemId++;
+            }
         }
 
         //Settings and About
@@ -401,9 +404,9 @@ public class MainActivity extends AppCompatActivity {
     private void setupDrawerHeader() {
         drawerHeaderBinding.drawerHeaderActionButton.setOnClickListener(view -> toggleServices());
 
-        // If the current app name is bigger than the default "NewPipe" (7 chars),
+        // If the current app name is bigger than the default "Tubular" (7 chars),
         // let the text view grow a little more as well.
-        if (getString(R.string.app_name).length() > "NewPipe".length()) {
+        if (getString(R.string.app_name).length() > "Tubular".length()) {
             final ViewGroup.LayoutParams layoutParams =
                     drawerHeaderBinding.drawerHeaderNewpipeTitle.getLayoutParams();
             layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -552,6 +555,19 @@ public class MainActivity extends AppCompatActivity {
             }
             sharedPrefEditor.putBoolean(Constants.KEY_MAIN_PAGE_CHANGE, false).apply();
             NavigationHelper.openMainActivity(this);
+        }
+
+        if (sharedPreferences.getBoolean(Constants.KEY_DRAWER_CHANGE, false)) {
+            if (DEBUG) {
+                Log.d(TAG, "Drawer settings have changed, recreating drawer menu...");
+            }
+            sharedPreferences.edit().putBoolean(Constants.KEY_DRAWER_CHANGE, false).apply();
+            try {
+                drawerLayoutBinding.navigation.getMenu().clear();
+                addDrawerMenuForCurrentService();
+            } catch (final Exception e) {
+                ErrorUtil.showUiErrorSnackbar(this, "Rebuilding drawer menu", e);
+            }
         }
 
         final boolean isHistoryEnabled = sharedPreferences.getBoolean(

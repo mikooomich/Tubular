@@ -35,7 +35,6 @@ import org.schabi.newpipe.settings.preferencesearch.PreferenceSearchResultHighli
 import org.schabi.newpipe.settings.preferencesearch.PreferenceSearchResultListener;
 import org.schabi.newpipe.settings.preferencesearch.PreferenceSearcher;
 import org.schabi.newpipe.util.DeviceUtils;
-import org.schabi.newpipe.util.ReleaseVersionUtil;
 import org.schabi.newpipe.util.ThemeHelper;
 import org.schabi.newpipe.views.FocusOverlayView;
 
@@ -260,13 +259,6 @@ public class SettingsActivity extends AppCompatActivity implements
      * be found when searching inside a release.
      */
     private void ensureSearchRepresentsApplicationState() {
-        // Check if the update settings are available
-        if (!ReleaseVersionUtil.INSTANCE.isReleaseApk()) {
-            SettingsResourceRegistry.getInstance()
-                    .getEntryByPreferencesResId(R.xml.update_settings)
-                    .setSearchable(false);
-        }
-
         // Hide debug preferences in RELEASE build variant
         if (DEBUG) {
             SettingsResourceRegistry.getInstance()
