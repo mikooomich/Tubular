@@ -39,7 +39,7 @@ import org.schabi.newpipe.local.feed.FeedViewModel
 import org.schabi.newpipe.player.playqueue.PlayQueueItem
 import org.schabi.newpipe.util.ExtractorHelper
 
-class HistoryRecordManager(context: Context) {
+class HistoryRecordManager(val context: Context) {
 
     private val database = NewPipeDatabase.getInstance(context)
     private val streamTable = database.streamDAO()
@@ -85,6 +85,7 @@ class HistoryRecordManager(context: Context) {
                 // if empty
                 if (info.duration < 0) {
                     val completeInfo = ExtractorHelper.getStreamInfo(
+                        context,
                         info.serviceId,
                         info.url,
                         false
@@ -220,7 +221,7 @@ class HistoryRecordManager(context: Context) {
     // ///////////////////////////////////////////////////////
 
     fun loadStreamState(queueItem: PlayQueueItem): Maybe<StreamStateEntity> {
-        return queueItem.stream
+        return queueItem.getStream(context)
             .map { info -> streamTable.upsert(StreamEntity(info)) }
             .flatMapPublisher { streamId -> streamStateTable.getState(streamId) }
             .firstElement()

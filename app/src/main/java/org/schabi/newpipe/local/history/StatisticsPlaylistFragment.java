@@ -369,7 +369,16 @@ public class StatisticsPlaylistFragment
         return getPlayQueue(0);
     }
 
+    @Override
+    public PlayQueue getShuffledQueue() {
+        return getPlayQueue(0, true);
+    }
+
     private PlayQueue getPlayQueue(final int index) {
+        return getPlayQueue(index, false);
+    }
+
+    private PlayQueue getPlayQueue(final int index, final boolean shuffled) {
         if (itemListAdapter == null) {
             return new SinglePlayQueue(Collections.emptyList(), 0);
         }
@@ -381,6 +390,11 @@ public class StatisticsPlaylistFragment
                 streamInfoItems.add(((StreamStatisticsEntry) item).toStreamInfoItem());
             }
         }
+
+        if (shuffled) {
+            Collections.shuffle(streamInfoItems);
+        }
+
         return new SinglePlayQueue(streamInfoItems, index);
     }
 

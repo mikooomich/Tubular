@@ -60,6 +60,9 @@ public final class NewPipeSettings {
         PreferenceManager.setDefaultValues(context, R.xml.update_settings, true);
         PreferenceManager.setDefaultValues(context, R.xml.debug_settings, true);
         PreferenceManager.setDefaultValues(context, R.xml.backup_restore_settings, true);
+        PreferenceManager.setDefaultValues(context, R.xml.sponsor_block_settings, true);
+        PreferenceManager.setDefaultValues(context, R.xml.sponsor_block_category_settings, true);
+        PreferenceManager.setDefaultValues(context, R.xml.return_youtube_dislikes_settings, true);
 
         saveDefaultVideoDownloadDirectory(context);
         saveDefaultAudioDownloadDirectory(context);
@@ -99,7 +102,7 @@ public final class NewPipeSettings {
     }
 
     private static String getNewPipeChildFolderPathForDir(final File dir) {
-        return new File(dir, "NewPipe").toURI().toString();
+        return new File(dir, "Tubular").toURI().toString();
     }
 
     public static boolean useStorageAccessFramework(final Context context) {
